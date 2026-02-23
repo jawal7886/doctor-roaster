@@ -108,33 +108,6 @@ const AppSidebar = () => {
             <span>Settings</span>
           </NavLink>
         </div>
-
-        {/* User info */}
-        <div className="border-t border-sidebar-border px-4 py-3">
-          <div className="flex items-center gap-3">
-            {currentUser?.avatar ? (
-              <div className="h-10 w-10 rounded-full overflow-hidden bg-white shadow-md border border-sidebar-border">
-                <img 
-                  src={currentUser.avatar} 
-                  alt={currentUser.name} 
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            ) : (
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-sm font-bold text-white shadow-md">
-                {currentUser?.name.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
-              </div>
-            )}
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-sidebar-primary-foreground truncate">
-                {currentUser?.name || 'User'}
-              </p>
-              <p className="text-xs text-sidebar-muted truncate">
-                {currentUser?.roleDisplay || currentUser?.role || 'Staff'}
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </aside>
   );
