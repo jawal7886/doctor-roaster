@@ -1,0 +1,214 @@
+/**
+ * File: index.css
+ * Purpose: Global design system for hospital management application.
+ * All colors, gradients, shadows, fonts, and animations are defined here.
+ * Uses HSL color format throughout.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core palette — clinical navy & teal */
+    --background: 210 20% 98%;
+    --foreground: 215 28% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    /* Primary — Deep medical navy */
+    --primary: 215 50% 23%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary — Soft blue-gray */
+    --secondary: 210 25% 93%;
+    --secondary-foreground: 215 28% 17%;
+
+    /* Muted — Subtle cool gray */
+    --muted: 210 18% 95%;
+    --muted-foreground: 215 14% 46%;
+
+    /* Accent — Medical teal */
+    --accent: 174 62% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive — Alert red */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success — Healthy green */
+    --success: 152 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning — Caution amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Info — Calm blue */
+    --info: 205 85% 55%;
+    --info-foreground: 0 0% 100%;
+
+    /* Borders & inputs */
+    --border: 214 20% 89%;
+    --input: 214 20% 89%;
+    --ring: 215 50% 23%;
+
+    --radius: 0.625rem;
+
+    /* Sidebar */
+    --sidebar-background: 215 50% 18%;
+    --sidebar-foreground: 210 25% 85%;
+    --sidebar-primary: 174 62% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 45% 25%;
+    --sidebar-accent-foreground: 210 25% 90%;
+    --sidebar-border: 215 40% 25%;
+    --sidebar-ring: 174 62% 50%;
+    --sidebar-muted: 215 30% 35%;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(215 50% 23%), hsl(215 50% 33%));
+    --gradient-accent: linear-gradient(135deg, hsl(174 62% 40%), hsl(174 62% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(215 50% 18%), hsl(215 50% 28%), hsl(174 62% 35%));
+    --shadow-sm: 0 1px 2px 0 hsl(215 28% 17% / 0.04);
+    --shadow-md: 0 4px 12px -2px hsl(215 28% 17% / 0.08);
+    --shadow-lg: 0 8px 24px -4px hsl(215 28% 17% / 0.12);
+    --shadow-card: 0 1px 3px hsl(215 28% 17% / 0.06), 0 1px 2px hsl(215 28% 17% / 0.04);
+  }
+
+  .dark {
+    --background: 215 28% 10%;
+    --foreground: 210 25% 93%;
+
+    --card: 215 28% 13%;
+    --card-foreground: 210 25% 93%;
+
+    --popover: 215 28% 13%;
+    --popover-foreground: 210 25% 93%;
+
+    --primary: 174 62% 50%;
+    --primary-foreground: 215 50% 12%;
+
+    --secondary: 215 25% 18%;
+    --secondary-foreground: 210 25% 93%;
+
+    --muted: 215 20% 18%;
+    --muted-foreground: 215 14% 60%;
+
+    --accent: 174 62% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 22%;
+    --input: 215 20% 22%;
+    --ring: 174 62% 50%;
+
+    --sidebar-background: 215 35% 8%;
+    --sidebar-foreground: 210 25% 85%;
+    --sidebar-primary: 174 62% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 30% 15%;
+    --sidebar-accent-foreground: 210 25% 90%;
+    --sidebar-border: 215 25% 18%;
+    --sidebar-ring: 174 62% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/50;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer utilities {
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-200 ease-out;
+  }
+  .card-hover:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  /* Status dot animation */
+  .status-pulse {
+    @apply relative;
+  }
+  .status-pulse::after {
+    content: '';
+    @apply absolute inset-0 rounded-full animate-ping opacity-30;
+    background: inherit;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Soft shadow for interactive elements */
+  .shadow-soft {
+    box-shadow: 0 2px 8px -1px hsl(215 28% 17% / 0.08), 0 1px 4px -1px hsl(215 28% 17% / 0.06);
+  }
+
+  /* Sidebar scrollbar styling */
+  .sidebar-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  .sidebar-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    @apply bg-sidebar-border rounded-full;
+  }
+  .sidebar-scroll::-webkit-scrollbar-thumb:hover {
+    @apply bg-sidebar-muted;
+  }
+}

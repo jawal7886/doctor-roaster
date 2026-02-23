@@ -1,0 +1,81 @@
+================================================================================
+                    PAGE REFRESH LOGOUT ISSUE
+================================================================================
+
+PROBLEM:
+When you refresh the page, you get logged out.
+
+BACKEND STATUS:
+✓ Backend is working correctly
+✓ Token persistence works
+✓ /me endpoint works with valid token
+✓ Backend is NOT the problem
+
+FRONTEND STATUS:
+❌ Something in the frontend is causing logout on refresh
+❌ Need to debug to find exact cause
+
+================================================================================
+                    WHAT TO DO NOW
+================================================================================
+
+1. OPEN BROWSER DEVTOOLS (Press F12)
+
+2. GO TO CONSOLE TAB
+
+3. LOGIN as staff user:
+   Email: sajawalnazir147@gmail.com
+   Password: password
+
+4. REFRESH THE PAGE (F5)
+
+5. LOOK FOR THESE LOGS:
+   [UserContext] refreshUser called
+   [UserContext] Token from localStorage: ...
+   [UserContext] Calling /me endpoint...
+
+6. CHECK WHAT HAPPENS:
+   - Is the token present?
+   - Does /me succeed or fail?
+   - What error is shown?
+
+================================================================================
+                    ALSO CHECK
+================================================================================
+
+NETWORK TAB:
+- Look for /me request
+- Check status code (should be 200)
+- Check if Authorization header is present
+
+APPLICATION TAB:
+- Go to Local Storage
+- Check if 'auth_token' exists
+- Does it persist after refresh?
+
+================================================================================
+                    REPORT BACK
+================================================================================
+
+Please tell me:
+1. What logs appear in Console?
+2. What's the status of /me request in Network tab?
+3. Is auth_token in localStorage after refresh?
+4. What error (if any) is shown?
+
+Then I can provide a specific fix!
+
+================================================================================
+                    TEMPORARY WORKAROUND
+================================================================================
+
+While debugging:
+- Don't refresh the page
+- Use sidebar navigation instead
+- Use browser back/forward buttons
+
+================================================================================
+
+For detailed debugging steps, read: PAGE_REFRESH_LOGOUT_FIX.md
+
+================================================================================
